@@ -9,8 +9,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
         path: `${__dirname}/src/images`,
+        name: `images`,
+      },
+    },
+		{
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/pages`,
+        name: 'pages',
       },
     },
     `gatsby-transformer-sharp`,
@@ -32,6 +39,24 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+			resolve: "gatsby-source-apiserver",
+      options: {
+        url: `https://www.googleapis.com/calendar/v3`,
+				apiKey: `APIKEY`,
+				calendarId: `e46tdagg6fbqkki2uqr8njer6c@group.calendar.google.com`,
+				scopes: `https://www.googleapis.com/auth/calendar.readonly`,
+
+				method: "get",
+
+      	headers: {
+        "Content-Type": "application/json"
+      	},
+				data: {},
+				name: `events`,
+				entityLevel: `data.events`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

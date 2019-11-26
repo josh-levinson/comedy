@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Calendar from "../utils/calendar"
 
 const Calendar = () => (
   <Layout>
@@ -14,4 +13,4 @@ const Calendar = () => (
   </Layout>
 )
 
-export default About
+export default Calendar
