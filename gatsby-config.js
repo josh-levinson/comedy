@@ -41,24 +41,14 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    {
-			resolve: "gatsby-source-apiserver",
+		{
+      resolve: "gatsby-source-custom-api",
       options: {
-        url: `https://www.googleapis.com/calendar/v3`,
-				apiKey: `APIKEY`,
-				calendarId: `e46tdagg6fbqkki2uqr8njer6c@group.calendar.google.com`,
-				scopes: `https://www.googleapis.com/auth/calendar.readonly`,
-
-				method: "get",
-
-      	headers: {
-        "Content-Type": "application/json"
-      	},
-				data: {},
-				name: `events`,
-				entityLevel: `data.events`,
-      },
-    },
+        url: {
+          development: "https://www.googleapis.com/calendar/v3/calendars/<calendarId>/events?key=<apiKey>",
+        },
+     	}
+		},
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
