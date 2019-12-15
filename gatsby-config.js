@@ -45,8 +45,9 @@ module.exports = {
       resolve: "gatsby-source-custom-api",
       options: {
         url: {
-          development: "https://www.googleapis.com/calendar/v3/calendars/<calendarId>/events?key=<apiKey>",
+          development: "https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events?key=${process.env.GOOGLE_CALENDAR_API_KEY}",
         },
+        rootKey: "calendar",
      	}
 		},
     // this (optional) plugin enables Progressive Web App + Offline functionality
