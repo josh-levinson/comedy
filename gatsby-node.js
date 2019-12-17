@@ -17,6 +17,11 @@ exports.createPages = async ({ graphql, actions }) => {
             id
             alternative_id
             summary
+            location
+            start {
+              dateTime
+            }
+            description
           }
         }
       }
@@ -36,6 +41,9 @@ exports.createPages = async ({ graphql, actions }) => {
           // in page queries as GraphQL variables.
           id: edge.node.id,
           summary: edge.node.summary,
+          location: edge.node.location,
+          start: edge.node.start.dateTime,
+          description: edge.node.description
         },
       })
     })
