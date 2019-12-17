@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Josh Levinson: jokes, words, etc.`,
@@ -14,10 +18,10 @@ module.exports = {
       },
     },
 		{
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/pages`,
-        name: 'pages',
+        name: "pages",
       },
     },
     `gatsby-transformer-sharp`,
@@ -42,14 +46,18 @@ module.exports = {
       },
     },
 		{
-      resolve: "gatsby-source-custom-api",
+      resolve: "gatsby-source-apiserver",
       options: {
-        url: {
-          development: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events?key=${process.env.GOOGLE_CALENDAR_API_KEY}`,
+        url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events?key=${process.env.GOOGLE_CALENDAR_API_KEY}`,
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
         },
-        rootKey: "calendar",
-     	}
-		},
+        auth: false,
+        name: "items",
+        entityLevel: "items",
+        },
+      },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
