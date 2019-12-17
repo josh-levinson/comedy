@@ -45,7 +45,7 @@ module.exports = {
       resolve: "gatsby-source-custom-api",
       options: {
         url: {
-          development: "https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events?key=${process.env.GOOGLE_CALENDAR_API_KEY}",
+          development: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events?key=${process.env.GOOGLE_CALENDAR_API_KEY}`,
         },
         rootKey: "calendar",
      	}
