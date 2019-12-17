@@ -1,29 +1,8 @@
-import React from "react";
-import { graphql } from "gatsby";
+import React from "react"
 
-/* 
-See gatsby-node issue
+const Item = props => {
+  console.log(props)
+  return <h1>{props.pageContext.summary}</h1>
+}
 
-const Item = ({ data }) => {
-  return <h1>{data.calendar.items.summary}</h1>;
-};
-
-export const query = graphql`
-  query($id: String) {
-		calendar {
-			items(id: { eq: $id }) {
-				id
-				summary
-				description
-				location
-				start {
-					date	
-				}
-			}
-		}
-  }
-`;
-
-export default Item;
-
-*/
+export default Item
