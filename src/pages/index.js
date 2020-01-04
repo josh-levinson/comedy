@@ -19,6 +19,8 @@ const IndexPage = ({data}) => {
       {data.allItems.edges.map(({ node }, index) => (
         <div>
           <Link to={node.alternative_id}>{node.summary}</Link>
+          <br />
+          {node.start.dateTime}
         </div>
       ))}
     </Layout>
@@ -28,11 +30,18 @@ export default IndexPage
 
 export const query = graphql`
   query {
-    allItems {
+    allItems(
+      limit: 10
+      sort: {
+        fields: [start___dateTime], order: ASC }
+    ) {
       edges {
         node {
           summary
           alternative_id
+          start {
+            dateTime(formatString: "dddd DD, MMM YYYY")
+          }
         }
       }
     }
