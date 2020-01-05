@@ -6,6 +6,20 @@
 
 const path = require("path")
 
+const today = new Date().toISOString();
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions
+  deletePage(page)
+  createPage({
+    ...page,
+    context: {
+      ...page.context,
+      currentDate: today,
+    },
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const item = path.resolve("src/pages/item.js")
