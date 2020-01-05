@@ -6,7 +6,6 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 
 const IndexPage = ({data}) => {
-  console.log(data);
   return (
     <Layout>
       <SEO title="Home" />
@@ -29,9 +28,9 @@ const IndexPage = ({data}) => {
 export default IndexPage
 
 export const query = graphql`
-  query GetNextShows ($currentDate:Date = now()) {
+  query GetNextShows ($currentDate:Date) {
     allItems(
-      limit: 10
+      limit: 5 
       filter: { start: { dateTime: { gt: $currentDate } } }
       sort: { fields: [start___dateTime], order: ASC }
     ) {

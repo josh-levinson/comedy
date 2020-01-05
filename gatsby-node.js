@@ -6,20 +6,19 @@
 
 const path = require("path")
 
-exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
-  actions.createTypes([
-    schema.buildObjectType({
-      name: 'allItems',
-      interfaces: ['Node'],
-      fields: {
-        isFuture: {
-          type: 'Boolean!',
-          resolve: source => new Date(source.date) > new Date(),
-        },
-      },
-    }),
-  ]);
-};
+const today = new Date().toISOString();
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions
+  deletePage(page)
+  createPage({
+    ...page,
+    context: {
+      ...page.context,
+      currentDate: today,
+    },
+  })
+}
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
