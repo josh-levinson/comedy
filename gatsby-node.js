@@ -6,6 +6,21 @@
 
 const path = require("path")
 
+exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
+  actions.createTypes([
+    schema.buildObjectType({
+      name: 'allItems',
+      interfaces: ['Node'],
+      fields: {
+        isFuture: {
+          type: 'Boolean!',
+          resolve: source => new Date(source.date) > new Date(),
+        },
+      },
+    }),
+  ]);
+};
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const item = path.resolve("src/pages/item.js")

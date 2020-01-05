@@ -29,18 +29,18 @@ const IndexPage = ({data}) => {
 export default IndexPage
 
 export const query = graphql`
-  query {
+  query GetNextShows ($currentDate:Date = now()) {
     allItems(
       limit: 10
-      sort: {
-        fields: [start___dateTime], order: ASC }
+      filter: { start: { dateTime: { gt: $currentDate } } }
+      sort: { fields: [start___dateTime], order: ASC }
     ) {
       edges {
         node {
           summary
           alternative_id
           start {
-            dateTime(formatString: "dddd DD, MMM YYYY")
+            dateTime(formatString: "dddd MMM Do, YYYY h:mm a")
           }
         }
       }
