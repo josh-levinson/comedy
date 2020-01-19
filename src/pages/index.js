@@ -17,9 +17,9 @@ const IndexPage = ({data}) => {
       <h1>Upcoming Shows</h1>
       {data.allItems.edges.map(({ node }, index) => (
         <div>
-          <Link to={node.alternative_id}>{node.summary}</Link>
-          <br />
-          {node.start.dateTime}
+          <Link to={node.alternative_id}>{node.summary}</Link><br />
+          {node.location}<br />
+          {new Date(node.start.dateTime).toLocaleString()}
         </div>
       ))}
     </Layout>
@@ -38,8 +38,9 @@ export const query = graphql`
         node {
           summary
           alternative_id
+          location
           start {
-            dateTime(formatString: "dddd MMM Do, YYYY h:mm a")
+            dateTime
           }
         }
       }
