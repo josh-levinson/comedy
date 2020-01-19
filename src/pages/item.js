@@ -4,17 +4,27 @@ import Img from "gatsby-image"
 import Layout from "../components/layout"
 
 const Item = props => {
-	const defaultFlyer = props.data.allFile.edges.filter(edge => edge.node.name === "default_flyer")[0].node
+	let showFlyer = props.data.allFile.edges.filter(edge => edge.node.name === "default_flyer")[0].node
+
+	const showFullDate = new Date(props.pageContext.start);
+	const showDate = ("0" + showFullDate.getDate().toString()).slice(-2)
+	const showMonth = ("0" + (showFullDate.getMonth() + 1).toString()).slice(-2)
+	const showYear = showFullDate.getFullYear();
+	const showFormattedDate = showYear + "-" + showMonth + "-" + showDate
+
+	if (props.data.allFile.edges.filter(edge => edge.node.name === showFormattedDate).length > 0) {
+		showFlyer = props.data.allFile.edges.filter(edge => edge.node.name === showFormattedDate)[0].node
+	}
 	
-	console.log(defaultFlyer);
+	console.log(showFormattedDate);
   return (
   <Layout>
     <div>
       <h1>{props.pageContext.summary}</h1>
       <h3>{props.pageContext.location}</h3>
-      <h3>{props.pageContext.start}</h3>
+      <h3>{showFullDate.toLocaleString()}</h3>
       <p>{props.pageContext.description}</p>
-			<Img fluid={defaultFlyer.childImageSharp.fluid} />
+			<Img fluid={showFlyer.childImageSharp.fluid} />
       <Link to="/">Home</Link>
     </div>
   </Layout>
