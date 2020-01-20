@@ -4,3 +4,29 @@
   padding: 1.45rem 1.0875rem;
   background: black;
 }
+
+.header a {
+  color: #E34234;
+}
+
+.header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.header li {
+  float: left;
+  padding: 0 2em 0 0;
+}
+
+.header li a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.header li a:hover {
+  color: #8AAD8A;
+}

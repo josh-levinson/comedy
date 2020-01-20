@@ -22,6 +22,14 @@ const Header = ({ siteTitle }) => (
         </Link>
       </h1>
     </div>
+    <ul>
+      <li>
+        <Link to="/">Shows</Link>
+      </li>
+      <li>
+        <Link to="/about">About</Link>
+      </li>
+    </ul>
   </header>
 )
 
