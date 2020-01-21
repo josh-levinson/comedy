@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
+import FormattedDate from "../components/formatted_date"
 
 const Item = props => {
 	let showFlyer = props.data.allFile.edges.filter(edge => edge.node.name === "default_flyer")[0].node
@@ -21,8 +22,8 @@ const Item = props => {
   <Layout>
     <div>
       <h2>{props.pageContext.summary}</h2>
+      <FormattedDate dateTime={props.pageContext.start} />  
       <div>{props.pageContext.location}</div>
-      <div>{showFullDate.toLocaleString()}</div>
       <div>{props.pageContext.description}</div>
 			<Img fluid={showFlyer.childImageSharp.fluid} />
       <Link to="/">Home</Link>

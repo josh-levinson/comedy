@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import style from "./show_blurb.module.css"
+import FormattedDate from "./formatted_date"
 
 export default props => (
   <div className={style.container}>
@@ -8,9 +9,7 @@ export default props => (
       <div>
         <Link to={props.alternative_id}>{props.summary}</Link>
       </div>
-      <div>
-        {new Date(props.dateTime).toLocaleString()}
-      </div>
+      <FormattedDate dateTime={props.dateTime} />
       <div>
         {props.location}
       </div>

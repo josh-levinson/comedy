@@ -2,7 +2,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import ShowBlurb from "../components/show_blurb.js"
+import ShowBlurb from "../components/show_blurb"
 
 const IndexPage = ({data}) => {
   return (
