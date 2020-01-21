@@ -8,5 +8,5 @@ export default props => (
 )
 
 function formatDate(date) {
-  return moment(date).format("ddd MMM do, YYYY h:mma") 
+  return moment(date).format("ddd MMM Do, YYYY h:mma") 
 }
