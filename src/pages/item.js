@@ -25,7 +25,7 @@ const Item = props => {
       <FormattedDate dateTime={props.pageContext.start} />  
       <div>{props.pageContext.location}</div>
       <div>{props.pageContext.description}</div>
-			<Img fluid={showFlyer.childImageSharp.fluid} />
+			<Img fixed={showFlyer.childImageSharp.fixed} />
       <Link to="/">Home</Link>
     </div>
   </Layout>
@@ -44,9 +44,9 @@ export const query = graphql`
         node {
 					name
           childImageSharp {
-            fluid(maxWidth: 600, quality: 100) {
+            fixed(width: 600) {
               originalName
-                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFixed
               }
             }
           }
