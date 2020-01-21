@@ -1,8 +1,8 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ShowBlurb from "../components/show_blurb.js"
 
 const IndexPage = ({data}) => {
   return (
@@ -11,11 +11,12 @@ const IndexPage = ({data}) => {
       <h1>Welcome, humans.</h1>
       <h1>Upcoming Shows</h1>
       {data.allItems.edges.map(({ node }, index) => (
-        <div>
-          <Link to={node.alternative_id}>{node.summary}</Link><br />
-          {node.location}<br />
-          {new Date(node.start.dateTime).toLocaleString()}
-        </div>
+        <ShowBlurb 
+          alternative_id={node.alternative_id}
+          summary={node.summary}
+          location={node.location}
+          dateTime={node.start.dateTime}
+        />
       ))}
     </Layout>
   )

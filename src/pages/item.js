@@ -20,10 +20,10 @@ const Item = props => {
   return (
   <Layout>
     <div>
-      <h1>{props.pageContext.summary}</h1>
-      <h3>{props.pageContext.location}</h3>
-      <h3>{showFullDate.toLocaleString()}</h3>
-      <p>{props.pageContext.description}</p>
+      <h2>{props.pageContext.summary}</h2>
+      <div>{props.pageContext.location}</div>
+      <div>{showFullDate.toLocaleString()}</div>
+      <div>{props.pageContext.description}</div>
 			<Img fluid={showFlyer.childImageSharp.fluid} />
       <Link to="/">Home</Link>
     </div>

@@ -1,0 +1,13 @@
+.showBlurb {
+  background-color: #C7493A;
+  color: #161616;
+  padding: 0.2em 0.2em 0.2em 0.2em;
+  margin: 0 0 0.8em 0;
+  overflow: hidden;
+}
+
+.showBlurb a {
+  font-size: 1.3em;
+  color: #161616;
+  text-decoration: underline;
+}
