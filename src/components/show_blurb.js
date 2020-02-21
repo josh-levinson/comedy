@@ -1,18 +1,17 @@
 import React from "react"
 import { Link } from "gatsby"
-import style from "./show_blurb.module.css"
 import FormattedDate from "./formatted_date"
+import { Pane, Text } from "evergreen-ui"
 
 export default props => (
-  <div className={style.container}>
-    <div className={style.showBlurb}>
-      <div>
-        <Link to={props.alternative_id}>{props.summary}</Link>
-      </div>
-      <FormattedDate dateTime={props.dateTime} />
-      <div>
-        {props.location}
-      </div>
-    </div>
-  </div>
+  <Pane 
+    padding={5}
+    elevation={1}
+    backgroundco="tint2"
+    display="flex"
+  >
+    <Pane><Link to={props.alternative_id}>{props.summary}</Link></Pane>
+    <Pane><FormattedDate dateTime={props.dateTime} /></Pane>
+    <Pane>{props.location}</Pane>
+  </Pane>
 )

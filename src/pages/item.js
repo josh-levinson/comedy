@@ -13,6 +13,8 @@ const Item = props => {
 	const showYear = showFullDate.getFullYear();
 	const showFormattedDate = showYear + "-" + showMonth + "-" + showDate
 
+  const googleMapUrl = "https://maps.google.com/search/" + encodeURI(props.pageContext.location)
+
 	if (props.data.allFile.edges.filter(edge => edge.node.name === showFormattedDate).length > 0) {
 		showFlyer = props.data.allFile.edges.filter(edge => edge.node.name === showFormattedDate)[0].node
 	}
@@ -23,7 +25,11 @@ const Item = props => {
     <div>
       <h2>{props.pageContext.summary}</h2>
       <FormattedDate dateTime={props.pageContext.start} />  
-      <div>{props.pageContext.location}</div>
+      <div>
+        <a href={googleMapUrl}>
+          {props.pageContext.location}
+        </a>
+      </div>
       <div>{props.pageContext.description}</div>
 			<Img fixed={showFlyer.childImageSharp.fixed} />
       <Link to="/">Home</Link>

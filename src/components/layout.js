@@ -8,6 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { Pane } from "evergreen-ui"
 
 import Header from "./header"
 
@@ -24,20 +25,22 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
+      <Pane
+        is="section"
+        background="tint2"
+        border="muted"
+        marginLeft={48}
+        marginRight={48}
+        marginY={24}
+        paddingTop={12}
+        paddingX={40}
       >
+        <Header siteTitle={data.site.siteMetadata.title} />
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, created by Josh Levinson with Gatsby.
         </footer>
-      </div>
+      </Pane>
     </>
   )
 }
