@@ -1,36 +1,4 @@
-.header {
-  margin: 0 auto;
-  maxWidth: 960;
-  padding: 1.25rem 1.0875rem;
-  background: #1A1A1A;
-}
-
-.header a {
-  color: #E34234;
-}
-
-.header ul {
-  list-style-type: none;
-  margin: 0 0 0 15.45rem;
-  padding: 0 0 1em 0;
-}
-
-.header li {
-  float: left;
-  padding: 0 1em 0 0;
-  font-size: 1.4em;
-}
-
-.header li a {
-  display: block;
-  text-align: center;
+a {
   text-decoration: none;
-}
-
-.header li a:hover {
-  color: #8AAD8A;
-}
-
-.active {
-  background: #C7493A;
+  font-size: large;
 }

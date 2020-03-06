@@ -24,24 +24,21 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <Pane
-        is="section"
-        background="tint2"
-        border="muted"
-        marginLeft={48}
-        marginRight={48}
-        marginY={24}
-        paddingTop={12}
-        paddingX={40}
-      >
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, created by Josh Levinson with Gatsby.
-        </footer>
-      </Pane>
-    </>
+    <Pane
+      background="tint2"
+      border="muted"
+      marginLeft={48}
+      marginRight={48}
+      marginY={24}
+      paddingTop={12}
+      paddingX={40}
+    >
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <main>{children}</main>
+      <footer>
+        © {new Date().getFullYear()}, created by Josh Levinson with Gatsby.
+      </footer>
+    </Pane>
   )
 }
 

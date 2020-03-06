@@ -10,26 +10,36 @@ const IndexPage = ({data}) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Pane>
+      <Pane
+        display="flex"   
+        alignItems="center"
+        justifyContent="center"
+      >
         <Pane
-          alignItems="center"   
+          paddingRight={25}  
         >
-          <Heading size={500}>Josh</Heading>
-          <Heading size={500}>Levinson</Heading>
+          <Img fixed={data.logoImage.childImageSharp.fixed} />
         </Pane>
         <Pane>
-       		<Img fixed={data.file.childImageSharp.fixed} />   
+       		<Img fixed={data.headshotImage.childImageSharp.fixed} />   
         </Pane>
       </Pane>
-      <h1>Upcoming Shows</h1>
-      {data.allItems.edges.map(({ node }, index) => (
-        <ShowBlurb 
-          alternative_id={node.alternative_id}
-          summary={node.summary}
-          location={node.location}
-          dateTime={node.start.dateTime}
-        />
-      ))}
+      <Pane
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        marginTop={25}
+      >
+        <Heading size={800}>Upcoming Shows</Heading>
+        {data.allItems.edges.map(({ node }, index) => (
+          <ShowBlurb 
+            alternative_id={node.alternative_id}
+            summary={node.summary}
+            location={node.location}
+            dateTime={node.start.dateTime}
+          />
+        ))}
+      </Pane>
     </Layout>
   )
 }
@@ -53,9 +63,16 @@ export const query = graphql`
         }
       }
     }
-   	file(relativePath: { eq: "josh-pink.jpg" }) {
+    logoImage: file(relativePath: { eq: "namelogo.png" }) {
       childImageSharp {
-        fixed(width: 750, height: 750) {
+        fixed(width: 400) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+   	headshotImage: file(relativePath: { eq: "josh-pink.jpg" }) {
+      childImageSharp {
+        fixed(width: 350, height: 350) {
           ...GatsbyImageSharpFixed
         }
       }

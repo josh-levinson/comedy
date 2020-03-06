@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import FormattedDate from "../components/formatted_date"
+import { Heading, Pane, Text } from "evergreen-ui"
 
 const Item = props => {
 	let showFlyer = props.data.allFile.edges.filter(edge => edge.node.name === "default_flyer")[0].node
@@ -13,7 +14,7 @@ const Item = props => {
 	const showYear = showFullDate.getFullYear();
 	const showFormattedDate = showYear + "-" + showMonth + "-" + showDate
 
-  const googleMapUrl = "https://maps.google.com/search/" + encodeURI(props.pageContext.location)
+  const googleMapUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURI(props.pageContext.location)
 
 	if (props.data.allFile.edges.filter(edge => edge.node.name === showFormattedDate).length > 0) {
 		showFlyer = props.data.allFile.edges.filter(edge => edge.node.name === showFormattedDate)[0].node
@@ -22,18 +23,34 @@ const Item = props => {
 	console.log(showFormattedDate);
   return (
   <Layout>
-    <div>
-      <h2>{props.pageContext.summary}</h2>
-      <FormattedDate dateTime={props.pageContext.start} />  
-      <div>
-        <a href={googleMapUrl}>
-          {props.pageContext.location}
-        </a>
-      </div>
-      <div>{props.pageContext.description}</div>
-			<Img fixed={showFlyer.childImageSharp.fixed} />
-      <Link to="/">Home</Link>
-    </div>
+    <Pane 
+      padding={5}
+      background="redTint"
+      border="default"
+      borderRadius={3}
+      width="75%"
+      display="flex"
+      marginTop={10}
+      >
+        <Pane
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          paddingRight={30}
+        >
+          <Heading size={600}>{props.pageContext.summary}</Heading>
+          <FormattedDate dateTime={props.pageContext.start} />  
+          <a href={googleMapUrl} target="_blank" rel="noopener">
+            <Text>{props.pageContext.location}</Text>
+          </a>
+          <Text>{props.pageContext.description}</Text>
+        </Pane>
+        <Pane
+          alignItems="center"  
+        >
+          <Img fixed={showFlyer.childImageSharp.fixed} />
+        </Pane>
+    </Pane>
   </Layout>
 )
 }
@@ -50,7 +67,7 @@ export const query = graphql`
         node {
 					name
           childImageSharp {
-            fixed(width: 600) {
+            fixed(width: 400) {
               originalName
                 ...GatsbyImageSharpFixed
               }
