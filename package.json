@@ -16,7 +16,7 @@
     "gatsby-source-apiserver": "^2.1.4",
     "gatsby-source-custom-api": "^2.1.2",
     "gatsby-source-filesystem": "^2.1.36",
-    "gatsby-transformer-remark": "^2.6.37",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.3.9",
     "googleapis": "^39.2.0",
     "graphql-iso-date": "^3.6.1",
